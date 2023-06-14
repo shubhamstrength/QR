@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code Generator</title>
+  <style>
+    /* Optional CSS styles for QR code container */
+    #qrcode-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>QR Code Generator</h1>
+  
+  <div>
+    <label for="url-input">Enter URL:</label>
+    <input type="text" id="url-input" />
+    <button onclick="generateQRCode()">Generate QR Code</button>
+  </div>
+  
+  <div id="qrcode-container"></div>
+
+  <script>
+    function generateQRCode() {
+      var url = document.getElementById("url-input").value;
+
+      // Create the QR code data
+      var qrData = "https://chart.googleapis.com/chart?chs=200x200&cht=qr&chl=" + encodeURIComponent(url);
+
+      // Create an <img> element and set its source to the QR code data
+      var imgElement = document.createElement("img");
+      imgElement.src = qrData;
+
+      // Append the <img> element to the container in the HTML
+      var container = document.getElementById("qrcode-container");
+      container.innerHTML = "";
+      container.appendChild(imgElement);
+    }
+  </script>
+</body>
+</html>
